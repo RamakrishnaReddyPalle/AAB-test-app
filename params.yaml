@@ -1,0 +1,20 @@
+# model_path: 'D:\IIT BBS\Intern works\Flasho tech\Legends in Architecture plan\Streamlit App\test repo\takeoff2\models\trained_model_with_tiles.pt'
+# tile_size: 250
+# stride: 200
+# conf_threshold: 0.72
+# iou_threshold: 0.5
+# output_image_path: 'D:\IIT BBS\Intern works\Flasho tech\Legends in Architecture plan\Streamlit App\test repo\takeoff2\output\annotated_image.jpg'
+# output_csv_path: 'D:\IIT BBS\Intern works\Flasho tech\Legends in Architecture plan\Streamlit App\test repo\takeoff2\output\predicted_boxes.csv'
+# image_path: 'C:\Users\Dell\Desktop\ashva_t20.png'
+# log_dir: 'logs'
+
+model_key: 'models/trained_model_with_tiles.pt'
+tile_size: 250
+stride: 200
+conf_threshold: 0.65
+iou_threshold: 0.5
+log_dir: 'logs'
+s3_bucket_name: 'ai-assisted-bidding'
+s3_input_image_key: 'input/uploaded_image.jpg'  # Replace with desired input image key in S3
+s3_output_image_key: 'output/annotated_image.jpg'  # Replace with desired output image key in S3
+s3_output_csv_key: 'output/results.csv'  # Replace with desired output CSV key in S3

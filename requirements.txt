@@ -1,0 +1,11 @@
+boto3
+streamlit==1.24.0
+torch
+opencv-python-headless
+numpy
+ultralytics
+matplotlib
+pandas
+PyYAML
+Pillow
+s3fs 
