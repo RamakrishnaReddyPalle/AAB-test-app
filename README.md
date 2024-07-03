@@ -7,7 +7,7 @@ This project implements an object detection pipeline using `YOLOv8` architecture
 
 1. Clone the repository:
   ```
-  git clone https://github.com/FTCService/takeoff.git
+  git clone https://github.com/RamakrishnaReddyPalle/AAB-test-app.git
   ```
 2. Change directory to git clone:
 ```
@@ -26,7 +26,8 @@ cd "path\to\AAB-test-app"
    c) Output/downloadable image key
    d) Output `.csv` details key
 
-   *These can be only accessed through Access ID and secret key for the bucket
+   * These can be only accessed through Access ID and secret key for the bucket
+   * If you want to run the pipeline locally, params.yaml has #commented code which are the params for local, and the app.py abd prediction_pipeline.py has to be modified accordingly.
 
 ## **Running the Pipeline**
 
