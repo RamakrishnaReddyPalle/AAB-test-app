@@ -1,5 +1,5 @@
-<<<<<<< HEAD
-# ***Prediction Pipeline***
+# **AI ASSISTED BIDDING - TEST APP**
+### ***Prediction Pipeline***
 
 This project implements an object detection pipeline using `YOLOv8` architecture with `Effientnetb6` backbone.
 
@@ -11,20 +11,22 @@ This project implements an object detection pipeline using `YOLOv8` architecture
   ```
 2. Change directory to git clone:
 ```
-cd "path\to\takeoff"
+cd "path\to\AAB-test-app"
 ```
-3. Install the dependencies:
+3. Install the dependencies: (version specific given)
   ```
   pip install -r requirements.txt
   ```
 
 ## **Configuration**
 
-4. Update the `params.yaml` file with the required following configuration parameters: <br />
-a) Input image path `(JPEG format)`<br />
-b) Model path in your local `(takeoff\models\trained_models_with_tiles.pt)`<br />
-c) Output Image `.jpeg` saving path<br />
-d) Output image details `.csv` file saving path
+4. The `params.yaml` file contains S3 buscket keys for:
+   a) Model key
+   b) Input/uploaded image key
+   c) Output/downloadable image key
+   d) Output `.csv` details key
+
+   *These can be only accessed through Access ID and secret key for the bucket
 
 ## **Running the Pipeline**
 
@@ -32,6 +34,3 @@ d) Output image details `.csv` file saving path
 ```
 python src/pipeline/prediction_pipeline.py
 ```
-=======
-# AI-Assisted-Bidding-TEST-APP
->>>>>>> 375082bbe51af89b258c9e438b94c0dce5eac06b
