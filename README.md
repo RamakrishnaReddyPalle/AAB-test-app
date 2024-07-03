@@ -29,7 +29,7 @@ cd "path\to\AAB-test-app"
    * These can be only accessed through Access ID and secret key for the bucket
    * If you want to run the pipeline locally, params.yaml has #commented code which are the params for local, and the app.py abd prediction_pipeline.py has to be modified accordingly.
 
-## **Running the Pipeline**
+## **Running the Pipeline locally:**
 
 5. To run the prediction pipeline, execute:
 ```
