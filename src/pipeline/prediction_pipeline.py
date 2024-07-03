@@ -22,7 +22,7 @@ from src.logging import logger
 # Logger
 logger = logger.get_logger(__name__)
 
-def load_config(config_path=r'D:\IIT BBS\Intern works\Flasho tech\Legends in Architecture plan\Streamlit App\test repo\takeoff2\params.yaml'):
+def load_config(config_path='params.yaml'):
     with open(config_path, 'r') as file:
         config = yaml.safe_load(file)
     return config
