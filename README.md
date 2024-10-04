@@ -1,4 +1,8 @@
 # **AI ASSISTED BIDDING - TEST APP**
+
+---
+# **Demo**
+
 ### ***Prediction Pipeline***
 
 This project implements an object detection pipeline using `YOLOv8` architecture with `Effientnetb6` backbone.
