@@ -8,7 +8,7 @@
 - *Limitations of Traditional Methods:* Existing methods struggle with occlusion, graphical variability, and complexity in real-world data.
 - *Solution Developed:* Leveraged deep learning, inspired by YOLOv8, with a tile-based training strategy to improve small object detection in architectural plans and other applications.
 
-Check [**Detailed Report**](Detailed Report.pdf) for complete detailes about Data pre-processing, Model, Training strategies and Inference
+Check **[Detailed Report](Detailed%20Report.pdf)** for complete details about Data pre-processing, Model, Training strategies, and Inference.
 
 ---
 # ***Demo***
