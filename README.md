@@ -1,7 +1,8 @@
 # **AI ASSISTED BIDDING - TEST APP**
 ---
 
-**Problem Statement:** Detecting small symbols in digital architectural floor plans is challenging due to occlusion, clutter, and varying graphical styles, making traditional methods inadequate for accurately identifying structural components, utilities, and furnishings in complex layouts.
+# ***Problem Statement***
+Detecting small symbols in digital architectural floor plans is challenging due to occlusion, clutter, and varying graphical styles, making traditional methods inadequate for accurately identifying structural components, utilities, and furnishings in complex layouts.
 
 - *Importance of Small Object Detection:* Critical in industries like defense, healthcare, and manufacturing for detecting objects in large, cluttered images.
 - *Challenges in Architectural Plans:* Small symbols are difficult to detect due to overlapping elements, clutter, and varying styles, making manual analysis impractical.
