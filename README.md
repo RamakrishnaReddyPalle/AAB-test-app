@@ -1,7 +1,7 @@
 # **AI ASSISTED BIDDING - TEST APP**
 
 ---
-# **Demo**
+# ***Demo***
 
 <div align="center">
   <!-- First row -->
@@ -28,7 +28,8 @@
 </div>
 
 ---
-## ***Prediction Pipeline***
+# ***Prediction Pipeline***
+
 
 This project implements an object detection pipeline using `YOLOv8` architecture with `Effientnetb6` backbone.
 
