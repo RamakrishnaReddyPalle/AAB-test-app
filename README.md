@@ -3,6 +3,31 @@
 ---
 # **Demo**
 
+<div align="center">
+  <!-- First row -->
+  <img src="assets/login.png" style="width:40%; display:inline-block; margin:15px;">
+  <img src="assets/interface.png" style="width:40%; display:inline-block; margin:15px;">
+</div>
+
+<div align="center">
+  <!-- First row -->
+  <img src="assets/uploading.png" style="width:40%; display:inline-block; margin:15px;">
+  <img src="assets/web_annotated.png" style="width:40%; display:inline-block; margin:15px;">
+</div>
+
+<div align="center">
+  <!-- First row -->
+  <img src="assets/full scale.png" style="width:40%; display:inline-block; margin:15px;">
+  <img src="assets/bar.png" style="width:40%; display:inline-block; margin:15px;">
+</div>
+
+<div align="center">
+  <!-- First row -->
+  <img src="assets/estimator.png" style="width:40%; display:inline-block; margin:15px;">
+  <img src="assets/estimate.png" style="width:40%; display:inline-block; margin:15px;">
+</div>
+
+
 ### ***Prediction Pipeline***
 
 This project implements an object detection pipeline using `YOLOv8` architecture with `Effientnetb6` backbone.
