@@ -27,8 +27,8 @@
   <img src="assets/estimate.png" style="width:40%; display:inline-block; margin:15px;">
 </div>
 
-
-### ***Prediction Pipeline***
+---
+## ***Prediction Pipeline***
 
 This project implements an object detection pipeline using `YOLOv8` architecture with `Effientnetb6` backbone.
 
