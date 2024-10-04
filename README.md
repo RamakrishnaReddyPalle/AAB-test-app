@@ -11,7 +11,7 @@
 
 <div align="center">
   <!-- First row -->
-  <img src="assets/uploading.png" style="width:40%; display:inline-block; margin:15px;">
+  <img src="assets/loaded.png" style="width:40%; display:inline-block; margin:15px;">
   <img src="assets/web_annotated.png" style="width:40%; display:inline-block; margin:15px;">
 </div>
 
