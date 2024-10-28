@@ -16,5 +16,6 @@ iou_threshold: 0.5
 log_dir: 'logs'
 s3_bucket_name: 'ai-assisted-bidding'
 s3_input_image_key: 'input/uploaded_image.jpg'  # Replace with desired input image key in S3
-s3_output_image_key: 'output/annotated_image.jpg'  # Replace with desired output image key in S3
+s3_output_image_key: 'output/annotated_image.jpg'  # Output with regular boxes
+s3_output_filled_image_key: 'output/annotated_filled_image.jpg'  # Output with filled boxes
 s3_output_csv_key: 'output/results.csv'  # Replace with desired output CSV key in S3
