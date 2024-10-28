@@ -3,7 +3,6 @@ import os
 import yaml
 import boto3
 from io import BytesIO
-# import pickle
 from tempfile import NamedTemporaryFile
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
@@ -14,9 +13,8 @@ import numpy as np
 from ultralytics import YOLO
 import matplotlib.pyplot as plt
 import pandas as pd
-import torchvision.ops.boxes as bops
 from src.utils import tile_image, compute_iou, merge_boxes
-from src.components import predict_on_tiled_images, track_and_filter_predictions, draw_boxes, count_boxes_by_class, get_predicted_boxes_with_details
+from src.components import predict_on_tiled_images, track_and_filter_predictions, draw_boxes, draw_filled_boxes, count_boxes_by_class, get_predicted_boxes_with_details
 from src.logging import logger
 
 # Logger
@@ -31,8 +29,8 @@ def upload_to_s3(file_data, bucket_name, key):
     try:
         s3 = boto3.resource(
             service_name='s3',
-            aws_access_key_id='AKIA4E6QHUK7RFON3G5C',
-            aws_secret_access_key='7w6ydkKGhl3ofd8ZB10tUQbycxQ/ZT6o2eTc/4VD',
+            aws_access_key_id='YOUR_AWS_ACCESS_KEY_ID',
+            aws_secret_access_key='YOUR_AWS_SECRET_ACCESS_KEY',
             region_name='ap-south-1'  # Mumbai region
         )
         bucket = s3.Bucket(bucket_name)
@@ -47,8 +45,8 @@ def download_from_s3(bucket_name, key):
     try:
         s3 = boto3.resource(
             service_name='s3',
-            aws_access_key_id='AKIA4E6QHUK7RFON3G5C',
-            aws_secret_access_key='7w6ydkKGhl3ofd8ZB10tUQbycxQ/ZT6o2eTc/4VD',
+            aws_access_key_id='YOUR_AWS_ACCESS_KEY_ID',
+            aws_secret_access_key='YOUR_AWS_SECRET_ACCESS_KEY',
             region_name='ap-south-1'  # Mumbai region
         )
         file_stream = BytesIO()
@@ -59,7 +57,6 @@ def download_from_s3(bucket_name, key):
     except Exception as e:
         logger.error(f"Error downloading file from S3: {e}")
         return None
-    
 
 def main(progress_callback=None):
     config = load_config()
@@ -77,19 +74,16 @@ def main(progress_callback=None):
         return
 
     try:
-        # Save the BytesIO stream to a temporary file
         with NamedTemporaryFile(suffix=".pt", delete=False) as temp_file:
             temp_file.write(model_stream.read())
             temp_file_path = temp_file.name
 
-        # Load the YOLO model from the temporary file path
         model = YOLO(temp_file_path)
         logger.info(f"Model loaded successfully. Model type: {type(model)}")
     except Exception as e:
         logger.error(f"Error loading model: {e}")
         return
     finally:
-        # Ensure the temporary file is deleted after loading the model
         if 'temp_file_path' in locals() and os.path.exists(temp_file_path):
             os.remove(temp_file_path)
             logger.debug(f"Temporary file '{temp_file_path}' has been removed from disk")
@@ -125,17 +119,28 @@ def main(progress_callback=None):
     filtered_boxes, filtered_scores, filtered_classes = track_and_filter_predictions(predictions, tile_coords, iou_threshold=iou_threshold)
     logger.info("Predictions tracked and filtered")
 
-    # Draw the final boxes on the image
+    # Draw regular boxes on the image
     draw_conf_threshold = config['conf_threshold']
     image_with_boxes = draw_boxes(image, filtered_boxes, filtered_scores, filtered_classes, conf_threshold=draw_conf_threshold)
-    logger.info("Final boxes drawn on image")
+    logger.info("Regular bounding boxes drawn on image")
 
-    # Encode the image and upload to S3
+    # Draw filled boxes on another copy of the image
+    image_with_filled_boxes = draw_filled_boxes(image.copy(), filtered_boxes, filtered_scores, filtered_classes, conf_threshold=draw_conf_threshold)
+    logger.info("Filled bounding boxes drawn on image")
+
+    # Upload regular box image to S3
     _, buffer = cv2.imencode('.jpg', image_with_boxes)
     image_stream = BytesIO(buffer)
     output_image_key = config['s3_output_image_key']
     if upload_to_s3(image_stream, bucket_name, output_image_key):
-        logger.info(f"Annotated image uploaded to S3: {output_image_key}")
+        logger.info(f"Annotated image with regular boxes uploaded to S3: {output_image_key}")
+
+    # Upload filled box image to S3
+    _, buffer_filled = cv2.imencode('.jpg', image_with_filled_boxes)
+    image_filled_stream = BytesIO(buffer_filled)
+    filled_output_image_key = config['s3_output_filled_image_key']
+    if upload_to_s3(image_filled_stream, bucket_name, filled_output_image_key):
+        logger.info(f"Annotated image with filled boxes uploaded to S3: {filled_output_image_key}")
 
     # Count boxes by class
     class_counts = count_boxes_by_class(filtered_classes)
