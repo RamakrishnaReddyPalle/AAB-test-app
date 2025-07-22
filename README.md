@@ -1,4 +1,4 @@
-# **AI ASSISTED BIDDING - TEST APP**
+# **FloorSight - TEST APP**
 ---
 
 # ***Problem Statement***
